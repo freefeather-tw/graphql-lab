@@ -8,8 +8,8 @@ spring:
     password: 'webcomm'
     driver-class-name: org.h2.Driver
   jpa:
-    show-sql: true
-    format-sql: true
+    show-sql: false
+    format-sql: false
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
@@ -23,3 +23,5 @@ logging:
   level:
     root: ERROR
     tw.com.webcomm: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
