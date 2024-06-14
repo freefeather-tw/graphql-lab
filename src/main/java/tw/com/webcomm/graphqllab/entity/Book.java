@@ -2,9 +2,11 @@ package tw.com.webcomm.graphqllab.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,7 +31,11 @@ public class Book {
   @Column
   private int pageCount;
 
-  @Column
+  @Column(insertable = true, updatable = true)
   private String authorId;
+
+  @ManyToOne(targetEntity = Author.class)
+  @JoinColumn(name = "authorId", referencedColumnName = "id", insertable = false, updatable = false)
+  private Author author;
   
 }
